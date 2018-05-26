@@ -1,11 +1,14 @@
 import React from "react";
-import Header from "./Header";
-import TicketList from "./TicketList";
+import HeaderBar from "./HeaderBar";
+import Schedule from "./Schedule";
+import Footer from "./Footer"; 
 
 function App(){
   return (
     <div>
-      <Header/>
+      <HeaderBar/>
+      <Schedule/>
+      <Footer/>
     </div>
   );
 }
