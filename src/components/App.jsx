@@ -1,7 +1,7 @@
-import React from "react";
-import HeaderBar from "./HeaderBar";
-import Schedule from "./Schedule";
-import Footer from "./Footer"; 
+import React from 'react'
+import HeaderBar from './HeaderBar'
+import Schedule from './Schedule'
+import Footer from './Footer' 
 
 function App(){
   return (
@@ -10,7 +10,7 @@ function App(){
       <Schedule/>
       <Footer/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

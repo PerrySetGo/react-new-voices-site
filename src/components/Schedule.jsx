@@ -1,8 +1,8 @@
-import React from "react";
-import ScheduleHeaderItemSort from "./ScheduleHeaderItemSort";
-import Event from "./Event";
+import React from 'react'
+import ScheduleHeaderItemSort from './ScheduleHeaderItemSort'
+import Event from './Event'
 
-function Schedule(props){
+function Schedule(){
   return(
     <table>
       <th><ScheduleHeaderItemSort
@@ -36,7 +36,7 @@ function Schedule(props){
         attendance="false"
       />
     </table>
-  );
+  )
 }
 
-export default Schedule;
+export default Schedule

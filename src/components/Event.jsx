@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
 function Event(props){
   return(
-  <tr>
+    <tr>
       <td>
         {props.day}
       </td>
@@ -20,7 +20,7 @@ function Event(props){
         {props.title} {props.attendance} <button>Go!</button>
       </td>
     </tr>
-  );
+  )
 }
 
 
@@ -32,4 +32,4 @@ Event.propTypes = {
   title: PropTypes.string.isRequired,
   attendance:PropTypes.bool.iSrequired
 }
-export default Event;
+export default Event

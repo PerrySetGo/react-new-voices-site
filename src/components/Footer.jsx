@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 
 function Footer(){
@@ -6,7 +6,7 @@ function Footer(){
   return(
     <h4><a href="#">View Custom Schedule</a></h4>
 
-  );
+  )
 }
 
-export default Footer;
+export default Footer

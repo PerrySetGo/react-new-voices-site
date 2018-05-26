@@ -1,7 +1,7 @@
-import React from "react";
-import HeaderItem from "./HeaderItem";
+import React from 'react'
+import HeaderItem from './HeaderItem'
 
-function HeaderBar(props){
+function HeaderBar(){
 
   var headerStyles = {
     backgroundColor:'#ecf0f1',
@@ -18,7 +18,7 @@ function HeaderBar(props){
       <HeaderItem title="See all Sessions" />
       <HeaderItem title="Sign Up" />
     </div>
-  );
+  )
 }
 
-export default HeaderBar;
+export default HeaderBar
