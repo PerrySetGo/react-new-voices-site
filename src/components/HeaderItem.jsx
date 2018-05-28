@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 function HeaderItem(props) {
   var itemStyles = {
     backgroundColor: 'cyan',
-    border: '1px solid red',
     display:'inline',
     align:'center',
     marginLeft: 'auto',

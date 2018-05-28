@@ -5,7 +5,6 @@ function HeaderBar(){
 
   var headerStyles = {
     backgroundColor:'#ecf0f1',
-    border: '1px solid black',
     fontFamily:'sans-serif',
     width:'100%',
     textAlign: 'justify'

@@ -42,6 +42,13 @@ function Schedule(){
     //table header row contains properties that will be sortable at some point - EXCEPT title, which is why it is hardcoded
 
     <table>
+    <tr className="header-row">
+    <style jsx>{`
+      .header-row {
+          background-color: blue;
+      }`}</style>
+
+
       {masterScheduleHeaderItemList.map((scheduleHeaderItemSort, index) =>
         <th>
           <ScheduleHeaderItemSort
@@ -50,6 +57,9 @@ function Schedule(){
           /></th>
       )}
       <th>Title</th>
+
+
+      </tr>
       {masterEventList.map((event, index) =>
         <Event
           day={event.day}
