@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "lint": "eslint src/** src/**/**; exit 0"
+    "lint": "eslint src/** src/**/**; exit 0",
+    "lintfix": "eslint src/** src/**/** --fix; exit 0"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-router-dom": "^4.0.0",
     "styled-jsx": "^2.2.6"
   },
   "devDependencies": {

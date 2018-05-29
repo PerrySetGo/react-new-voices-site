@@ -42,21 +42,21 @@ function Schedule(){
     //table header row contains properties that will be sortable at some point - EXCEPT title, which is why it is hardcoded
 
     <table>
-    <tr className="header-row">
-    <style jsx>{`
+      <tr className="header-row">
+        <style jsx>{`
       .header-row {
           background-color: blue;
       }`}</style>
 
 
-      {masterScheduleHeaderItemList.map((scheduleHeaderItemSort, index) =>
-        <th>
-          <ScheduleHeaderItemSort
-            title = {scheduleHeaderItemSort.title}
-            key = {index}
-          /></th>
-      )}
-      <th>Title</th>
+        {masterScheduleHeaderItemList.map((scheduleHeaderItemSort, index) =>
+          <th>
+            <ScheduleHeaderItemSort
+              title = {scheduleHeaderItemSort.title}
+              key = {index} //why is this not getting picked up and causing an error?
+            /></th>
+        )}
+        <th>Title</th>
 
 
       </tr>

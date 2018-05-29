@@ -1,5 +1,6 @@
 import React from 'react'
 import HeaderItem from './HeaderItem'
+import { Link } from 'react-router-dom'
 
 function HeaderBar(){
 
@@ -9,13 +10,15 @@ function HeaderBar(){
     width:'100%',
     textAlign: 'justify'
   }
-
+  //replace with JSX loop
   return(
     <div style={headerStyles}>
-      <HeaderItem title="About" />
-      <HeaderItem title="Register" />
-      <HeaderItem title="See all Sessions" />
-      <HeaderItem title="Sign Up" />
+      <Link to="/"><HeaderItem title="Home" /></Link>
+      <Link to="#"><HeaderItem title="About" /></Link>
+      <Link to="#">  <HeaderItem title="Register" /></Link>
+      <Link to="#"><HeaderItem title="See all Sessions" /></Link>
+      <Link to="#"><HeaderItem title="Sign Up" /></Link>
+      <Link to="/newevent"><HeaderItem title="Add new event" /></Link>
     </div>
   )
 }
