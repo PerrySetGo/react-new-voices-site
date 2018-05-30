@@ -14,7 +14,7 @@ function HeaderBar(){
 
   var imageStyles = {
     width:'800'
-  };
+  }
   //replace with JSX loop
   return(
     <div style={headerStyles}>
