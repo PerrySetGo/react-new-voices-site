@@ -1,7 +1,7 @@
 import React from 'react'
 import HeaderBar from './HeaderBar'
 import Schedule from './Schedule'
-import NewEventForm from './NewEventForm'
+import NewEventControl from './NewEventControl'
 import Error404 from './Error404'
 import Footer from './Footer'
 import { Switch, Route } from 'react-router-dom'
@@ -35,7 +35,7 @@ function App(){
       <Schedule/>
       <Switch>
         <Route exact path='/' component = {Schedule} />
-        <Route path='/newevent' component = {NewEventForm} />
+        <Route path='/newevent' component = {NewEventControl} />
 
         <Route component={Error404} />
       </Switch>
