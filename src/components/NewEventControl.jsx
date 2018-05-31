@@ -1,28 +1,35 @@
 import React from 'react'
+import LoginComponent from './LoginComponent'
+import NewEventForm from './NewEventForm'
 
 class NewEventControl extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       formVisibleOnPage: false
-    };
-  this.handleClick = this.handleClick.bind(this); //still not sure i 100% get this
+    }
+    this.handleLoginSubmitConfirm = this.handleLoginSubmitConfirm.bind(this) //still not sure i 100% get this
   }
 
-  handleClick(){
-    console.log(this);
-    this.setState({formVisibleOnPage:true});
-    console.log("form state: " + this.state.formVisibleOnPage);
+  handleLoginSubmitConfirm(){
+    this.setState({formVisibleOnPage:true})
   }
 
   render(){
+    let currentlyVisibleContent = null
+    if (this.state.formVisibleOnPage){
+      currentlyVisibleContent = <NewEventForm />
+    }
+    else {
+      currentlyVisibleContent = <LoginComponent onLoginConfirmation={this.handleLoginSubmitConfirm}/>
+    }
+
     return(
       <div>
-        <p>This is the NewEventControl component!<strong onClick={this.handleClick}>toggle</strong></p>
+        {currentlyVisibleContent}
       </div>
     )
   }
-
 }
 
-export default NewEventControl;
+export default NewEventControl

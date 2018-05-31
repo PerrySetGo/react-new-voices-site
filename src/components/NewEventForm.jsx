@@ -24,6 +24,7 @@ function NewEventForm(){
           type='text'
           id='title'
           placeholder='Title'/>
+        <button>Go!</button>
       </form>
     </div>
   )
