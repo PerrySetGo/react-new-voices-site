@@ -1,6 +1,7 @@
 import React from 'react'
 import LoginComponent from './LoginComponent'
 import NewEventForm from './NewEventForm'
+import PropTypes from 'prop-types'
 
 class NewEventControl extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class NewEventControl extends React.Component {
   render(){
     let currentlyVisibleContent = null
     if (this.state.formVisibleOnPage){
-      currentlyVisibleContent = <NewEventForm />
+      currentlyVisibleContent = <NewEventForm onNewEventCreation={this.props.onNewEventCreation}/>
     }
     else {
       currentlyVisibleContent = <LoginComponent onLoginConfirmation={this.handleLoginSubmitConfirm}/>
@@ -30,6 +31,10 @@ class NewEventControl extends React.Component {
       </div>
     )
   }
+}
+
+NewEventControl.propTypes = {
+  onNewEventCreation: PropTypes.func
 }
 
 export default NewEventControl
