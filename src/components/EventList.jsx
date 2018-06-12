@@ -11,6 +11,7 @@ var masterEventListHeaderItemList = [
 ]
 
 function EventList(props){
+  console.log(props.eventList);
   return(
     //table header row contains properties that will be sortable at some point - EXCEPT title, which is why it is hardcoded
 
@@ -40,7 +41,7 @@ function EventList(props){
           location={event.location}
           track={event.track}
           title={event.title}
-          key={index}
+          key={event.id}
         />
       )}
     </table>
