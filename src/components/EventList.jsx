@@ -43,7 +43,11 @@ function EventList(props){
           title={event.title}
           key={event.id}
         />
-      )}
+        // If the event is happening in less than 2 hours, show a special icon here.
+
+      )
+
+    }
     </table>
   )}
 

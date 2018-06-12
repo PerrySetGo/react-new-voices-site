@@ -1,7 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Moment from 'moment';
 
 function Event(props){
+  var rightnow = new Moment();
+  var futureMoment = new Moment(props.day + " " + props.time);
+  var message = "";
+  if (futureMoment.diff(rightnow, 'hours', true) <= 2){
+    message = "event starts in 2 hours";
+  }
+
   return(
     <tr>
       <td>
@@ -9,6 +17,7 @@ function Event(props){
       </td>
       <td>
         {props.time}
+        {message}
       </td>
       <td>
         {props.location}
