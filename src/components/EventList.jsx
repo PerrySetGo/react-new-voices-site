@@ -4,17 +4,15 @@ import Event from './Event'
 import PropTypes from 'prop-types'
 
 var masterEventListHeaderItemList = [
-  {title:'Day'},
+  {title:'Date'},
   {title:'Time'},
   {title:'Locations'},
   {title:'Track'},
 ]
 
 function EventList(props){
-  console.log(props.eventList);
   return(
     //table header row contains properties that will be sortable at some point - EXCEPT title, which is why it is hardcoded
-
     <table>
       <tr className="header-row">
         <style jsx>{`
@@ -34,20 +32,21 @@ function EventList(props){
 
 
       </tr>
-      {props.eventList.map((event, index) =>
+      {props.eventList.map((event) =>
         <Event
-          day={event.date}
+          date={event.date}
           time={event.time}
           location={event.location}
           track={event.track}
           title={event.title}
           key={event.id}
+          message={event.message}
         />
         // If the event is happening in less than 2 hours, show a special icon here.
 
       )
 
-    }
+      }
     </table>
   )}
 
