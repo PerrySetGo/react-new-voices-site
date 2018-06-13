@@ -4,10 +4,14 @@ import Moment from 'moment'
 
 function Event(props){
 
-
-
+//if the route is admin, show edit button and then take user to edit form
+var route;
+  if (props.currentRouterPath === '/admin'){
+    route = <button type="submit">Edit</button>;
+  }
 
   return(
+    <div>
     <tr>
       <td>
         {props.date}
@@ -26,7 +30,12 @@ function Event(props){
         {props.title} {props.attendance} <button>Go!</button>
       </td>
     </tr>
+    <tr>
+    {route}
+    </tr>
+  </div>
   )
+  //create click handler to flip to edit mode here
 }
 
 Event.propTypes = {
@@ -36,7 +45,7 @@ Event.propTypes = {
   track:PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   attendance:PropTypes.bool.isRequired,
-  message:PropTypes.string.message
-
+  message:PropTypes.string.message,
+  currentRouterPath:PropTypes.string
 }
 export default Event

@@ -24,6 +24,7 @@ function HeaderBar(){
       <Link to="#"><HeaderItem title="See all Sessions" /></Link>
       <Link to="#"><HeaderItem title="Sign Up" /></Link>
       <Link to="/newevent"><HeaderItem title="Add new event" /></Link><br />
+      <Link to="/admin"><HeaderItem title="Admin" /></Link><br />
       <img style={imageStyles} src={image}/>
     </div>
   )

@@ -39,18 +39,19 @@ function EventList(props){
           location={event.location}
           track={event.track}
           title={event.title}
-          key={event.id}
           message={event.message}
+          key={event.id}
+          currentRouterPath={props.currentRouterPath}
         />
         // If the event is happening in less than 2 hours, show a special icon here.
-
-      )
-
-      }
+      )}
     </table>
   )}
 
 
-EventList.propTypes = {eventList:PropTypes.array}
+EventList.propTypes = {
+  eventList:PropTypes.array,
+  currentRouterPath:PropTypes.string
+}
 
 export default EventList

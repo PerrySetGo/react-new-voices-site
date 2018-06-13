@@ -6,6 +6,7 @@ import Error404 from './Error404'
 import Footer from './Footer'
 import { Switch, Route } from 'react-router-dom'
 import Moment from 'moment'
+import Admin from './Admin';
 
 class App extends React.Component {
   constructor(props) {
@@ -80,7 +81,7 @@ render() {
       <Switch>
       <Route exact path='/' render={()=><EventList eventList = {this.state.masterEventList}/> } />
       <Route path='/newevent' render={()=><NewEventControl onNewEventCreation = {this.handleAddingNewEventToList}/>} />
-
+      <Route path='/admin' render={(props)=><Admin eventList={this.state.masterEventList} currentRouterPath={props.location.pathname}/> }/>
       <Route component={Error404} />
       </Switch>
       <Footer/>
