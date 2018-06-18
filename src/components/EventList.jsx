@@ -42,6 +42,7 @@ function EventList(props){
           message={event.message}
           key={event.id}
           currentRouterPath={props.currentRouterPath}
+          onEventSelection={props.onEventSelection}
         />
         // If the event is happening in less than 2 hours, show a special icon here.
       )}
@@ -51,7 +52,8 @@ function EventList(props){
 
 EventList.propTypes = {
   eventList:PropTypes.array,
-  currentRouterPath:PropTypes.string
+  currentRouterPath:PropTypes.string,
+  onEventSelection:PropTypes.func
 }
 
 export default EventList

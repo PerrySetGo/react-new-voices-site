@@ -12,9 +12,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      masterEventList: []
+      masterEventList: [],
+      selectedEvent:null
     };
-    this.handleAddingNewEventToList = this.handleAddingNewEventToList.bind(this)
+    this.handleAddingNewEventToList = this.handleAddingNewEventToList.bind(this);
+    this.handleChangingSelectedEvent = this.handleChangingSelectedEvent.bind(this);
+
   }
 
   handleAddingNewEventToList(newEvent){
@@ -23,6 +26,10 @@ class App extends React.Component {
     this.setState({masterEventList: newMasterEventList});
   }
 
+  handleChangingSelectedEvent(event){
+    this.setState({selectedEvent: event});
+    alert('The selected event is now: ' + this.state.selectedEvent.title);
+  }
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
     this.updateEventElapsedWaitTime(),
@@ -81,7 +88,12 @@ render() {
       <Switch>
       <Route exact path='/' render={()=><EventList eventList = {this.state.masterEventList}/> } />
       <Route path='/newevent' render={()=><NewEventControl onNewEventCreation = {this.handleAddingNewEventToList}/>} />
-      <Route path='/admin' render={(props)=><Admin eventList={this.state.masterEventList} currentRouterPath={props.location.pathname}/> }/>
+      <Route path='/admin' render={(props)=><Admin
+        eventList={this.state.masterEventList}
+        currentRouterPath={props.location.pathname}
+        onEventSelection={this.handleChangingSelectedEvent}
+        selectedEvent={this.state.selectedEvent}
+      />} />
       <Route component={Error404} />
       </Switch>
       <Footer/>

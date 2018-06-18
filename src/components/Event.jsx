@@ -46,6 +46,7 @@ Event.propTypes = {
   title: PropTypes.string.isRequired,
   attendance:PropTypes.bool.isRequired,
   message:PropTypes.string.message,
-  currentRouterPath:PropTypes.string
+  currentRouterPath:PropTypes.string,
+  onEventSelection:PropTypes.func
 }
 export default Event

@@ -10,6 +10,7 @@ function Admin(props){
       <EventList
       eventList = {props.eventList}
       currentRouterPath={props.currentRouterPath}
+      onEventSelection={props.onEventSelection}
       />
     </div>
   )
@@ -19,5 +20,7 @@ export default Admin
 
 Admin.propTypes = {
   eventList:PropTypes.array,
-  currentRouterPath: PropTypes.string.isRequired
+  currentRouterPath: PropTypes.string.isRequired,
+  onEventSelection: PropTypes.func.isRequired
+  selectedEvent: PropTypes.object //actually null but whatever
 }
