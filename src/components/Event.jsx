@@ -3,16 +3,8 @@ import PropTypes from 'prop-types'
 import Moment from 'moment'
 
 function Event(props){
-
-//if the route is admin, show edit button and then take user to edit form
-var route;
-  if (props.currentRouterPath === '/admin'){
-    route = <button type="submit">Edit</button>;
-  }
-
-  return(
-    <div>
-    <tr>
+  var route;
+  const eventInformation =   <tr>
       <td>
         {props.date}
       </td>
@@ -29,12 +21,29 @@ var route;
       <td>
         {props.title} {props.attendance} <button>Go!</button>
       </td>
-    </tr>
-    <tr>
-    {route}
-    </tr>
-  </div>
-  )
+      <td>
+          {route}
+      </td>
+    </tr>;
+
+//if the route is admin, show edit button and then take user to edit form
+
+  if (props.currentRouterPath === '/admin'){
+    route = <button type="submit">Edit</button>;
+    return(
+    <div onClick={() => {props.onEventSelection({date:props.date, time:props.time, message:props.message, location:props.location, track:props.track, title:props.title});}}>
+      {eventInformation}
+    </div>
+    )
+  }
+
+  else {
+    return(
+      <div>
+        {ticketInformation}
+      </div>
+    )
+  }
   //create click handler to flip to edit mode here
 }
 

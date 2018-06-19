@@ -3,6 +3,8 @@ import EventListHeaderItemSort from './EventListHeaderItemSort'
 import Event from './Event'
 import PropTypes from 'prop-types'
 
+
+//this should be passed down from app so it is available to admin and eventlist.
 var masterEventListHeaderItemList = [
   {title:'Date'},
   {title:'Time'},

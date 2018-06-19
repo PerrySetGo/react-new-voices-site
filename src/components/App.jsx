@@ -17,7 +17,6 @@ class App extends React.Component {
     };
     this.handleAddingNewEventToList = this.handleAddingNewEventToList.bind(this);
     this.handleChangingSelectedEvent = this.handleChangingSelectedEvent.bind(this);
-
   }
 
   handleAddingNewEventToList(newEvent){
@@ -28,6 +27,7 @@ class App extends React.Component {
 
   handleChangingSelectedEvent(event){
     this.setState({selectedEvent: event});
+    console.log(this.state.selectedEvent);
     alert('The selected event is now: ' + this.state.selectedEvent.title);
   }
   componentDidMount() {
