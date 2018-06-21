@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { v4 } from 'uuid'
 
 function NewEventForm(props){
   //init empty vars
@@ -18,7 +17,6 @@ function NewEventForm(props){
       location: _location.value,
       track: _track.value,
       title:_title.value,
-      id:v4()
     })
     _date.value = ''
     _time.value = ''

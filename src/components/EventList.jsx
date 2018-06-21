@@ -22,7 +22,6 @@ function EventList(props){
           background-color: blue;
       }`}</style>
 
-
         {masterEventListHeaderItemList.map((eventListHeaderItemSort, index) =>
           <th>
             <EventListHeaderItemSort
@@ -32,28 +31,29 @@ function EventList(props){
         )}
         <th>Title</th>
 
-
       </tr>
-      {props.eventList.map((event) =>
-        <Event
+      {Object.keys(props.eventList).map(function(eventId){
+        var event = props.eventList[eventId]
+        return <Event
           date={event.date}
           time={event.time}
           location={event.location}
           track={event.track}
           title={event.title}
           message={event.message}
-          key={event.id}
+          key={eventId}
+          eventId={eventId}
           currentRouterPath={props.currentRouterPath}
           onEventSelection={props.onEventSelection}
         />
-        // If the event is happening in less than 2 hours, show a special icon here.
-      )}
+      })}
+
     </table>
   )}
 
 
 EventList.propTypes = {
-  eventList:PropTypes.array,
+  eventList:PropTypes.object,
   currentRouterPath:PropTypes.string,
   onEventSelection:PropTypes.func
 }

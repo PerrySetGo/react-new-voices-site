@@ -6,63 +6,67 @@ import Error404 from './Error404'
 import Footer from './Footer'
 import { Switch, Route } from 'react-router-dom'
 import Moment from 'moment'
-import Admin from './Admin';
+import Admin from './Admin'
+import { v4 } from 'uuid'
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      masterEventList: [],
+      masterEventList: {},
       selectedEvent:null
-    };
-    this.handleAddingNewEventToList = this.handleAddingNewEventToList.bind(this);
-    this.handleChangingSelectedEvent = this.handleChangingSelectedEvent.bind(this);
+    }
+    this.handleAddingNewEventToList = this.handleAddingNewEventToList.bind(this)
+    this.handleChangingSelectedEvent = this.handleChangingSelectedEvent.bind(this)
   }
 
   handleAddingNewEventToList(newEvent){
-    var newMasterEventList = this.state.masterEventList.slice()
-    newMasterEventList.push(newEvent)
-    this.setState({masterEventList: newMasterEventList});
+    var newEventId = v4()
+    var newMasterEventList = Object.assign({}, this.state.masterEventList, {
+      [newEventId]: newEvent
+    })
+    newMasterEventList[newEventId].message = this.displayIfLessThanTwoHoursToGo((event.date), (event.time))
+    this.setState({masterEventList: newMasterEventList})
   }
 
-  handleChangingSelectedEvent(event){
-    this.setState({selectedEvent: event});
-    console.log(this.state.selectedEvent);
-    alert('The selected event is now: ' + this.state.selectedEvent.title);
+  handleChangingSelectedEvent(eventId){
+    this.setState({selectedEvent: eventId})
   }
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
-    this.updateEventElapsedWaitTime(),
-    300000
-  );
-}
+      this.updateEventElapsedWaitTime(),
+    10000
+    )
+  }
 
-componentWillUnmount(){
-  clearInterval(this.waitTimeUpdateTimer);
-}
+  componentWillUnmount(){
+    clearInterval(this.waitTimeUpdateTimer)
+  }
 
-updateEventElapsedWaitTime() {
-  let newMasterEventList = this.state.masterEventList.slice();
-  newMasterEventList.forEach((event) =>
-    event.message = this.displayIfLessThanTwoHoursToGo((event.date), (event.time)),
-  );
-  this.setState({masterEventList: newMasterEventList})
-}
+  updateEventElapsedWaitTime() {
+    console.log(this.state.masterEventList);
+    var newMasterEventList = Object.assign({}, this.state.masterEventList)
+    Object.keys(newMasterEventList).forEach(eventId => {
+      newMasterEventList[eventId].message = this.displayIfLessThanTwoHoursToGo((newMasterEventList[eventId].date), (newMasterEventList[eventId].time))})
+    this.setState({masterEventList: newMasterEventList})
+  }
 
-displayIfLessThanTwoHoursToGo(date, time){
-    var rightnow = new Moment();
-    var futureMoment = new Moment(date + " " + time);
-    var message = "";
+  displayIfLessThanTwoHoursToGo(date, time){
+    var rightnow = new Moment()
+    var futureMoment = new Moment(date + ' ' + time)
+    var message = ''
     if (futureMoment.diff(rightnow, 'hours', true) <= 2){
-      message = "event starts in 2 hours";
+      message = 'event starts in 2 hours'
+    }else {
+      message ='broken'
     }
     return message
   }
 
-render() {
-  return (
-    <div>
-    <style jsx global>{`
+  render() {
+    return (
+      <div>
+        <style jsx global>{`
       body {
         font-family: Helvetica;
       }
@@ -81,22 +85,22 @@ render() {
         text-decoration: none;
       }
       `}
-      </style>
+        </style>
 
 
-      <HeaderBar/>
-      <Switch>
-      <Route exact path='/' render={()=><EventList eventList = {this.state.masterEventList}/> } />
-      <Route path='/newevent' render={()=><NewEventControl onNewEventCreation = {this.handleAddingNewEventToList}/>} />
-      <Route path='/admin' render={(props)=><Admin
-        eventList={this.state.masterEventList}
-        currentRouterPath={props.location.pathname}
-        onEventSelection={this.handleChangingSelectedEvent}
-        selectedEvent={this.state.selectedEvent}
-      />} />
-      <Route component={Error404} />
-      </Switch>
-      <Footer/>
+        <HeaderBar/>
+        <Switch>
+          <Route exact path='/' render={()=><EventList eventList = {this.state.masterEventList}/> } />
+          <Route path='/newevent' render={()=><NewEventControl onNewEventCreation = {this.handleAddingNewEventToList}/>} />
+          <Route path='/admin' render={(props)=><Admin
+            eventList={this.state.masterEventList}
+            currentRouterPath={props.location.pathname}
+            onEventSelection={this.handleChangingSelectedEvent}
+            selectedEvent={this.state.selectedEvent}
+          />} />
+          <Route component={Error404} />
+        </Switch>
+        <Footer/>
       </div>
     )
   }
