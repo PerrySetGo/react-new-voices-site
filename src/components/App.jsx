@@ -16,17 +16,7 @@ class App extends React.Component {
       masterEventList: {},
       selectedEvent:null
     }
-    this.handleAddingNewEventToList = this.handleAddingNewEventToList.bind(this)
     this.handleChangingSelectedEvent = this.handleChangingSelectedEvent.bind(this)
-  }
-
-  handleAddingNewEventToList(newEvent){
-    var newEventId = v4()
-    var newMasterEventList = Object.assign({}, this.state.masterEventList, {
-      [newEventId]: newEvent
-    })
-    newMasterEventList[newEventId].message = this.displayIfLessThanTwoHoursToGo((event.date), (event.time))
-    this.setState({masterEventList: newMasterEventList})
   }
 
   handleChangingSelectedEvent(eventId){
@@ -91,7 +81,7 @@ class App extends React.Component {
         <HeaderBar/>
         <Switch>
           <Route exact path='/' render={()=><EventList eventList = {this.state.masterEventList}/> } />
-          <Route path='/newevent' render={()=><NewEventControl onNewEventCreation = {this.handleAddingNewEventToList}/>} />
+          <Route path='/newevent' render={()=><NewEventControl/>} />
           <Route path='/admin' render={(props)=><Admin
             eventList={this.state.masterEventList}
             currentRouterPath={props.location.pathname}
