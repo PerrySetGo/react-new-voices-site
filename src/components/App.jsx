@@ -4,13 +4,15 @@ import EventList from './EventList'
 import NewEventControl from './NewEventControl'
 import Error404 from './Error404'
 import Footer from './Footer'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import Moment from 'moment'
 import Admin from './Admin'
-import { v4 } from 'uuid'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
   constructor(props) {
+    console.log(props);
     super(props)
     this.state = {
       masterEventList: {},
@@ -80,10 +82,10 @@ class App extends React.Component {
 
         <HeaderBar/>
         <Switch>
-          <Route exact path='/' render={()=><EventList eventList = {this.state.masterEventList}/> } />
+          <Route exact path='/' render={()=><EventList eventList = {this.props.masterEventList}/> } />
           <Route path='/newevent' render={()=><NewEventControl/>} />
           <Route path='/admin' render={(props)=><Admin
-            eventList={this.state.masterEventList}
+            eventList={this.props.masterEventList}
             currentRouterPath={props.location.pathname}
             onEventSelection={this.handleChangingSelectedEvent}
             selectedEvent={this.state.selectedEvent}
@@ -96,4 +98,15 @@ class App extends React.Component {
   }
 }
 //how can the above be changed to ONLY show the 404 message, as opposed to loading it beneath the rest?
-export default App
+
+App.propTypes = {
+  masterEventList: PropTypes.object
+};
+
+const mapStateToProps = state => {
+  return {
+    masterEventList: state
+  }
+}
+
+export default withRouter(connect()(App));
