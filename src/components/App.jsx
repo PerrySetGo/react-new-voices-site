@@ -15,7 +15,6 @@ class App extends React.Component {
     console.log(props);
     super(props)
     this.state = {
-      masterEventList: {},
       selectedEvent:null
     }
     this.handleChangingSelectedEvent = this.handleChangingSelectedEvent.bind(this)
@@ -36,11 +35,11 @@ class App extends React.Component {
   }
 
   updateEventElapsedWaitTime() {
-    console.log(this.state.masterEventList);
-    var newMasterEventList = Object.assign({}, this.state.masterEventList)
-    Object.keys(newMasterEventList).forEach(eventId => {
-      newMasterEventList[eventId].message = this.displayIfLessThanTwoHoursToGo((newMasterEventList[eventId].date), (newMasterEventList[eventId].time))})
-    this.setState({masterEventList: newMasterEventList})
+    // console.log(this.state.masterEventList);
+    // var newMasterEventList = Object.assign({}, this.state.masterEventList)
+    // Object.keys(newMasterEventList).forEach(eventId => {
+    //   newMasterEventList[eventId].message = this.displayIfLessThanTwoHoursToGo((newMasterEventList[eventId].date), (newMasterEventList[eventId].time))})
+    // this.setState({masterEventList: newMasterEventList})
   }
 
   displayIfLessThanTwoHoursToGo(date, time){
@@ -65,11 +64,11 @@ class App extends React.Component {
       .box {
         border: none;
         display: block;
-        border-bottom: 2px solid #fff;
-        margin-bottom: 10px;
+        border-bottom: '2px solid #fff';
+        margin-bottom: '10px';
       }
       .box:hover {
-        border-bottom: 2px solid #ccc;
+        border-bottom: '2px solid #ccc';
         outline: 0;
       }
       a {
@@ -83,7 +82,7 @@ class App extends React.Component {
         <HeaderBar/>
         <Switch>
           <Route exact path='/' render={()=><EventList eventList = {this.props.masterEventList}/> } />
-          <Route path='/newevent' render={()=><NewEventControl/>} />
+          <Route path='/newevent' render={()=><NewEventControl />} />
           <Route path='/admin' render={(props)=><Admin
             eventList={this.props.masterEventList}
             currentRouterPath={props.location.pathname}
@@ -106,7 +105,7 @@ App.propTypes = {
 const mapStateToProps = state => {
   return {
     masterEventList: state
-  }
-}
+  };
+};
 
-export default withRouter(connect()(App));
+export default withRouter(connect(mapStateToProps)(App));

@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest || echo 0",
+    "test": "jest; exit 0",
     "start": "webpack-dev-server",
-    "lint": "eslint src/** src/**/** || echo 0",
-    "lintfix": "eslint src/** src/**/** --fix || echo 0"
+    "lint": "eslint src/** src/**/**; exit 0",
+    "lintfix": "eslint src/** src/**/** --fix; exit 0"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
