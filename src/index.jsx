@@ -9,13 +9,17 @@ import { Provider } from 'react-redux';
 
 const store = createStore(eventListReducer);
 
+let unsubscribe = store.subscribe(() =>
+  console.log(store.getState()) //more here later.
+);
+
 const render = (Component) => {
   ReactDOM.render(
       <HashRouter>
         <Provider store={store}>
           <Component/>
         </Provider>
-      </HashRouter>
+      </HashRouter>,
     document.getElementById('react-app-root')
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
 
 function NewEventForm(props){
   //init empty vars
@@ -10,14 +10,19 @@ function NewEventForm(props){
   let _title = null
 
   function handleNewEventFormSubmission(event) {
+    const { dispatch } = props;
     event.preventDefault()
-    props.onNewEventCreation({
-      date:_date.value,
-      time:_time.value,
+    //action
+    const action = {
+      type:'ADD_EVENT',
+      id: null, //will become UUID
+      date: _date.value,
+      time: _time.value,
       location: _location.value,
       track: _track.value,
-      title:_title.value,
-    })
+      title: _title.value
+    };
+    dispatch(action); 
     _date.value = ''
     _time.value = ''
     _location.value = ''
@@ -66,8 +71,7 @@ function NewEventForm(props){
   )
 }
 
-NewEventForm.propTypes = {
-  onNewEventCreation:PropTypes.func
-}
+// NewEventForm = connect()(NewEventForm);
+// export default NewEventForm
 
-export default NewEventForm
+export default connect()(NewEventForm);
