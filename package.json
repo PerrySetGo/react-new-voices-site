@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest || echo 0",
-    "test:watch": "onchange \"__tests__/**/*.test.js\" -- npm run test",
+    "test:watch": "onchange \"__tests__/**/*.test.js\" \"src/reducers/*.js\" -- npm run test",
     "start": "webpack-dev-server",
     "lint": "eslint src/** src/**/** || echo 0",
     "lintfix": "eslint src/** src/**/** --fix || echo 0"

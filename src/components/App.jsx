@@ -104,7 +104,7 @@ App.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterEventList: state
+    masterEventList: state.masterEventList
   };
 };
 
