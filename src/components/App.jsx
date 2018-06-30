@@ -11,18 +11,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class App extends React.Component {
-  constructor(props) {
-    console.log(props);
-    super(props)
-    this.state = {
-      selectedEvent:null
-    }
-    this.handleChangingSelectedEvent = this.handleChangingSelectedEvent.bind(this)
-  }
-
-  handleChangingSelectedEvent(eventId){
-    this.setState({selectedEvent: eventId})
-  }
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
       this.updateEventElapsedWaitTime(),
@@ -84,10 +72,7 @@ class App extends React.Component {
           <Route exact path='/' render={()=><EventList eventList = {this.props.masterEventList}/> } />
           <Route path='/newevent' render={()=><NewEventControl />} />
           <Route path='/admin' render={(props)=><Admin
-            eventList={this.props.masterEventList}
             currentRouterPath={props.location.pathname}
-            onEventSelection={this.handleChangingSelectedEvent}
-            selectedEvent={this.state.selectedEvent}
           />} />
           <Route component={Error404} />
         </Switch>

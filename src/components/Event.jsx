@@ -1,8 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 function Event(props){
-  var route
+
+function handleSavingSelectedEvent(eventId){
+  const { dispatch } = props;
+  const action = {
+    type:'SELECT_EVENT',
+    eventId:eventId
+  };
+  dispatch(action);
+}
+
+
+  var route;
   const eventInformation =   <tr>
     <td>
       {props.date}
@@ -30,7 +42,7 @@ function Event(props){
   if (props.currentRouterPath === '/admin'){
     route = <button type="submit">Edit</button>
     return(
-      <div onClick={() => {props.onEventSelection(props.eventId)}}>
+      <div onClick={() => {handleSavingSelectedEvent(props.eventId);}}>
         {eventInformation}
       </div>
     )
@@ -57,4 +69,4 @@ Event.propTypes = {
   currentRouterPath:PropTypes.string,
   onEventSelection:PropTypes.func
 }
-export default Event
+export default connect()(Event);

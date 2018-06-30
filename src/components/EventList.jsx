@@ -44,7 +44,6 @@ function EventList(props){
           key={eventId}
           eventId={eventId}
           currentRouterPath={props.currentRouterPath}
-          onEventSelection={props.onEventSelection}
         />
       })}
 
@@ -55,7 +54,6 @@ function EventList(props){
 EventList.propTypes = {
   eventList:PropTypes.object,
   currentRouterPath:PropTypes.string,
-  onEventSelection:PropTypes.func
 }
 
 export default EventList
