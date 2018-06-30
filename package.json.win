@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "jest || echo 0",
-    "test:watch": "onchange \"__tests__/**/*.test.js\" -- npm run test",
     "start": "webpack-dev-server",
     "lint": "eslint src/** src/**/** || echo 0",
     "lintfix": "eslint src/** src/**/** --fix || echo 0"
@@ -31,7 +30,6 @@
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.29.0",
     "jest": "^20.0.4",
-    "onchange": "^4.0.0",
     "react-hot-loader": "^3.0.0-beta.7",
     "url-loader": "^0.6.2",
     "webpack": "^3.4.0",
