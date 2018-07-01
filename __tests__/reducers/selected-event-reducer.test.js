@@ -1,4 +1,5 @@
 import selectedEventReducer from './../../src/reducers/selected-event-reducer';
+import c from './../../src/constants';
 
 describe("selectedEventReducer", () => {
 
@@ -7,6 +8,6 @@ describe("selectedEventReducer", () => {
   });
 
   test('Should record which event was clicked on by user', () => {
-    expect(selectedEventReducer({}, {type: 'SELECT_EVENT', eventId: 1})).toEqual(1)
+    expect(selectedEventReducer({}, {type: 'c.SELECT_EVENT', eventId: 1})).toEqual(1)
   });
 });

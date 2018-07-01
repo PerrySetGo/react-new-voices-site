@@ -1,4 +1,5 @@
 import eventListReducer from './../../src/reducers/event-list-reducer';
+import c from './../../src/constants';
 
 describe ('eventListReducer', () => {
 
@@ -20,7 +21,7 @@ describe ('eventListReducer', () => {
   test ('Should succcessfully add new event to masterEventList', () =>{
     const {date, time, location, track, title, id} = sampleEventData;
     action = {
-      type: 'ADD_EVENT',
+      type: 'c.ADD_EVENT',
       date: date,
       time: time,
       location:location,

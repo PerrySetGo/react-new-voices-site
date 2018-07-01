@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import c from './../src/constants';
 
 function Event(props){
 
 function handleSavingSelectedEvent(eventId){
   const { dispatch } = props;
   const action = {
-    type:'SELECT_EVENT',
+    type:'c.SELECT_EVENT',
     eventId:eventId
   };
   dispatch(action);

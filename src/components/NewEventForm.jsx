@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { v4 } from 'uuid';
+import c from './../constants';
 
 function NewEventForm(props){
   //init empty vars
@@ -15,8 +16,8 @@ function NewEventForm(props){
     event.preventDefault()
     //action
     const action = {
-      type:'ADD_EVENT',
-      id: v4(), 
+      type:'c.ADD_EVENT',
+      id: v4(),
       date: _date.value,
       time: _time.value,
       location: _location.value,
