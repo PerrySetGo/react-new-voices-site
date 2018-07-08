@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
-
-
 function EventDetail(props){
   return(
     <div>

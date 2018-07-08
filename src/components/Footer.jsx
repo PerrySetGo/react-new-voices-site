@@ -1,11 +1,13 @@
-import React from 'react'
-
+import React from 'react';
+import ShowWeather from './ShowWeather';
 
 function Footer(){
 
   return(
-    <h4><a href="#">View Custom EventList</a></h4>
-
+    <div>
+      <h4><a href="#">View Custom EventList</a></h4>
+      <ShowWeather/>
+    </div>
   )
 }
 
